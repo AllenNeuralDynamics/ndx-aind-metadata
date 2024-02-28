@@ -67,6 +67,7 @@ def extract_nwbfile_kwargs(self, aind_datadescription_json: str, aind_procedures
     self._validate_aind_metadata(procedures, aind_Procedures)
     self._validate_aind_metadata(session, aind_Session)
 
+    #can add the session_description from a combo of project name and session_type?
     kwargs = dict(
         identifier = datadescription["name"], #Is this what we want? Also for session_id below
         session_start_time = session["session_start_time"],
