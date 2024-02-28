@@ -36,9 +36,9 @@ def get_surgery(procedures):
             for proc in sub_proc["procedures"]:
                 procedure_list.append(proc["procedure_type"])
             procedure_list.append("performed","on",procedure_date)
-            procedure_text = ' '.join(i) for i in procedure_list
+            procedure_text = ' '.join(procedure_list)
             text_list.append(procedure_text)
-    complete_surgery_text = '. 'join(i) for i in text_list
+    complete_surgery_text = '. '.join(text_list)
     return complete_surgery_text
 
 
@@ -60,16 +60,16 @@ def get_virus(procedures):
 def extract_nwbfile_kwargs(self, aind_datadescription_json: str, aind_procedures_json: str, aind_session_json: str):
     """Extracts key metadata for the NWBFile"""
 
-    datadescription = json.load(aind_datadescription_json)
-    procedures = json.load(aind_procedures_json)
-    session = json.load(aind_session_json)
+    datadescription = json.loads(aind_datadescription_json)
+    procedures = json.loads(aind_procedures_json)
+    session = json.loads(aind_session_json)
     self._validate_aind_metadata(datadescription, aind_DataDescription)
     self._validate_aind_metadata(procedures, aind_Procedures)
     self._validate_aind_metadata(session, aind_Session)
 
     #can add the session_description from a combo of project name and session_type?
     kwargs = dict(
-        identifier = datadescription["name"], #Is this what we want? Also for session_id below
+        identifier = #Unique ID
         session_start_time = session["session_start_time"],
         timestamps_reference_time  = session["session_start_time"], #I assume this is true
         experimenter = session["experimenter_full_name"],
@@ -89,7 +89,7 @@ def new_subject_init(self, aind_subject_json: str, aind_session_json: str):
 
     aind_metadata = json.loads(aind_subject_json)
     self._validate_aind_metadata(aind_metadata, aind_Subject)
-    aind_session = json.load(aind_session_json)
+    aind_session = json.loads(aind_session_json)
     self._validate_aind_metadata(aind_session, aind_Session)
 
     sex_value_map = {"Male": "M", "Female": "F"}
