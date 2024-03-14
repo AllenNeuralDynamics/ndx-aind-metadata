@@ -7,8 +7,8 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'ndx-aind-metadata'
-copyright = '2024, Saskia'
-author = 'Saskia'
+copyright = '2024, Saskia de Vries'
+author = 'Saskia de Vries'
 
 version = '0.1.0'
 release = 'alpha'

@@ -54,13 +54,14 @@ def get_virus(procedures):
                         virus_list.append(proc["injection_materials"]["name"])
                 except:
                     pass
-    return virus_list
+    virus_text = ' '.join(virus_list)
+    return virus_text
 
 
 def extract_nwbfile_kwargs(self, aind_datadescription_json: str, aind_procedures_json: str, aind_session_json: str):
     """Extracts key metadata for the NWBFile"""
 
-    datadescription = json.loads(aind_datadescription_json)
+    datadescription = json.loads(aind_datadescription_json) #load vs loads?
     procedures = json.loads(aind_procedures_json)
     session = json.loads(aind_session_json)
     self._validate_aind_metadata(datadescription, aind_DataDescription)
@@ -69,7 +70,7 @@ def extract_nwbfile_kwargs(self, aind_datadescription_json: str, aind_procedures
 
     #can add the session_description from a combo of project name and session_type?
     kwargs = dict(
-        identifier = #Unique ID
+        identifier = "test" #Unique ID (from metadata json?)
         session_start_time = session["session_start_time"],
         timestamps_reference_time  = session["session_start_time"], #I assume this is true
         experimenter = session["experimenter_full_name"],
@@ -104,7 +105,7 @@ def new_subject_init(self, aind_subject_json: str, aind_session_json: str):
         date_of_birth=datetime.strptime(aind_metadata["date_of_birth"], "%Y-%m-%d"),
         genotype=aind_metadata["genotype"],
         species=aind_metadata["species"]["name"],
-        age = "P"+str(age),
+        age = "P"+str(age)+"D",
     )
 
     Subject.__init__(self, **kwargs)
