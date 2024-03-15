@@ -37,7 +37,6 @@ with open(data_dir / "subject.json", "r") as f:
 
 nwbfile.subject = AindSubject(aind_schema_json=subject_json_text)
 
-
 for cls, filepath in (
         (AindDataDescription, data_dir / "data_description.json"),
         (AindProcedures, data_dir / "procedures.json"),
