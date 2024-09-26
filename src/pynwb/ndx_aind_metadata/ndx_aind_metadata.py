@@ -70,7 +70,7 @@ def extract_nwbfile_kwargs(self, aind_datadescription_json: str, aind_procedures
 
     #can add the session_description from a combo of project name and session_type?
     kwargs = dict(
-        identifier = "test" #Unique ID (from metadata json?),
+        identifier = "test", #Unique ID (from metadata json?)
         session_start_time = session["session_start_time"],
         timestamps_reference_time  = session["session_start_time"], #I assume this is true
         experimenter = session["experimenter_full_name"],
