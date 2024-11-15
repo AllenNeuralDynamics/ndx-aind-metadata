@@ -135,7 +135,7 @@ for name, model in (
 ):
     NewClass = get_class(f'Aind{name}', 'ndx-aind-metadata')
     NewClass.__init__ = partialmethod(new_labmetadata_init, name=f'Aind{name}', model=model)
-    NewClass._validate_aind_metadata = validate_aind_metadata
+    # NewClass._validate_aind_metadata = validate_aind_metadata
     new_classes.append(NewClass)
 
 AindDataDescription, AindProcedures, AindProcessing, AindRig, AindSession = new_classes
