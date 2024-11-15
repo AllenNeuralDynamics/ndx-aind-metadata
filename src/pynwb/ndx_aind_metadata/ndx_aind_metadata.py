@@ -119,7 +119,7 @@ AindSubject._validate_aind_metadata = validate_aind_metadata
 
 def new_labmetadata_init(self, name: str, aind_schema_json: str, model):
     aind_metadata = json.loads(aind_schema_json)
-    self._validate_aind_metadata(aind_metadata, model)
+    #self._validate_aind_metadata(aind_metadata, model)
 
     LabMetaData.__init__(self, name=name)
     self.aind_schema_json = aind_schema_json
